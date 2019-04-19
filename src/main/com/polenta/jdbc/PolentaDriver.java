@@ -73,21 +73,4 @@ public class PolentaDriver implements java.sql.Driver {
 		return null;
 	}
 
-	public static void main(String[] args) throws Exception {
-
-		Class.forName("com.polenta.jdbc.PolentaDriver");
-		
-		Connection conn = null;
-		Properties connectionProps = new Properties();
-		connectionProps.put("user", "");
-		connectionProps.put("password", "");
-
-		conn = DriverManager.getConnection("jdbc:polenta://localhost:3110/", connectionProps);
-		
-		if (conn != null) {
-			Statement stmt = conn.createStatement();
-		}
-
-	}
-
 }

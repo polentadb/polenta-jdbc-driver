@@ -71,8 +71,7 @@ public class PolentaConnection implements Connection {
 	}
 
 	public PreparedStatement prepareStatement(String sql) throws SQLException {
-		return null;
-		//throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");
+		return new PolentaPreparedStatement(sql);
 	}
 
 	public CallableStatement prepareCall(String sql) throws SQLException {
