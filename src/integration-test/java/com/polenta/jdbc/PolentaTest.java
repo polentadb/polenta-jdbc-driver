@@ -2,7 +2,6 @@ package com.polenta.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,11 +25,13 @@ public class PolentaTest {
 
 		if (conn != null) {
 			Statement stmt = conn.createStatement();
-			//stmt.executeQuery("");
+			//stmt.executeQuery("CREATE TABLE");
+			stmt.execute("CREATE TABLE");
 			
-			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM PERSON");
+			//ResultSet rs = stmt.executeQuery("SELECT * FROM PERSON");
 			
-			ResultSet rs = pstmt.executeQuery();
+			//rs.first();
+			
 		}
 
 	}

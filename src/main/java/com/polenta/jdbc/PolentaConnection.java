@@ -67,16 +67,15 @@ public class PolentaConnection implements Connection {
 	}
 
 	public Statement createStatement() throws SQLException {
-		return null;
+		return new PolentaStatement(this);
 	}
 
 	public PreparedStatement prepareStatement(String sql) throws SQLException {
-		return new PolentaPreparedStatement(sql);
+		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");
 	}
 
 	public CallableStatement prepareCall(String sql) throws SQLException {
 		return null;
-		//throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");
 	}
 
 	public String nativeSQL(String sql) throws SQLException {
