@@ -26,9 +26,9 @@ public class PolentaTest {
 		if (conn != null) {
 			Statement stmt = conn.createStatement();
 			//stmt.executeQuery("CREATE TABLE");
-			stmt.execute("CREATE TABLE");
+			stmt.execute("CREATE BAG PERSON (NAME STRING)");
 			
-			//ResultSet rs = stmt.executeQuery("SELECT * FROM PERSON");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM PERSON");
 			
 			//rs.first();
 			
