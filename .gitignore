@@ -6,3 +6,9 @@
 /target/
 
 .DS_Store
+
+/out/
+
+.idea/
+
+.gradle/
