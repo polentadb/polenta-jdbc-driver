@@ -1,5 +1,6 @@
 package com.polenta.jdbc;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import java.sql.SQLException;
 
@@ -8,6 +9,7 @@ import static org.junit.Assert.assertFalse;
 
 public class PolentaDriverTest extends PolentaDriver {
 
+	@Ignore
 	@Test
 	public void testAcceptsUrl() throws SQLException {
 		assertFalse(acceptsURL(null));
