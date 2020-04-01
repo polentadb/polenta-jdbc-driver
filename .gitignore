@@ -4,5 +4,11 @@
 
 /bin/
 /target/
+build/
 
 .DS_Store
+
+/out/
+
+.idea/
+.gradle/

@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+}
+
+group 'polenta'
+version '0.0.1'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+sourceSets {
+    integrationTest {
+        compileClasspath += main.output + test.output
+        runtimeClasspath += main.output + test.output
+    }
+}
+
+task integrationTest(type: Test) {
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    shouldRunAfter test
+}
+
+dependencies {
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+
+    testCompile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    testCompile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.25'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    integrationTestCompile group: 'junit', name: 'junit', version: '4.12'
+    integrationTestCompile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    integrationTestCompile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.25'
+    integrationTestCompile group: 'org.testcontainers', name: 'testcontainers', version: '1.11.4'
+}
+
+configurations {
+    integrationTestImplementation.extendsFrom implementation
+    integrationTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+check.dependsOn integrationTest
