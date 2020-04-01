@@ -14,24 +14,12 @@ repositories {
 
 sourceSets {
     integrationTest {
-        java {
-            compileClasspath += main.output + test.output
-            runtimeClasspath += main.output + test.output
-            srcDir file('src/integrationTest/java')
-        }
-        resources.srcDir file('src/integrationTest/resources')
+        compileClasspath += main.output + test.output
+        runtimeClasspath += main.output + test.output
     }
 }
 
-configurations {
-    integrationTestImplementation.extendsFrom implementation
-    integrationTestRuntimeOnly.extendsFrom runtimeOnly
-}
-
 task integrationTest(type: Test) {
-    description = 'Runs integration tests.'
-    group = 'verification'
-
     testClassesDirs = sourceSets.integrationTest.output.classesDirs
     classpath = sourceSets.integrationTest.runtimeClasspath
     shouldRunAfter test
@@ -44,10 +32,15 @@ dependencies {
     testCompile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.25'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
-    integrationTestCompile 'junit:junit:4.12'
-
+    integrationTestCompile group: 'junit', name: 'junit', version: '4.12'
     integrationTestCompile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
     integrationTestCompile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.25'
-
-    integrationTestCompile 'org.testcontainers:testcontainers:1.11.4'
+    integrationTestCompile group: 'org.testcontainers', name: 'testcontainers', version: '1.11.4'
 }
+
+configurations {
+    integrationTestImplementation.extendsFrom implementation
+    integrationTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+check.dependsOn integrationTest

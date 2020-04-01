@@ -1,12 +1,6 @@
 package com.polenta.jdbc;
 
-import java.rmi.RMISecurityManager;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.DriverPropertyInfo;
-import java.sql.SQLException;
-import java.sql.SQLFeatureNotSupportedException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -17,8 +11,9 @@ public class PolentaDriver implements java.sql.Driver {
 		try {
 			PolentaDriver driverInst = new PolentaDriver();
 			DriverManager.registerDriver(driverInst);
-			System.setSecurityManager(new RMISecurityManager());
+			//System.setSecurityManager(new RMISecurityManager());
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
