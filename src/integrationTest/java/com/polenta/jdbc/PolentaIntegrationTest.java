@@ -24,7 +24,6 @@ public class PolentaIntegrationTest {
 
 	@Test
 	public void testConnection() throws ClassNotFoundException, SQLException {
-
 		Class.forName("com.polenta.jdbc.PolentaDriver");
 
 		Properties connectionProps = new Properties();
@@ -45,7 +44,6 @@ public class PolentaIntegrationTest {
 	@Ignore
 	@Test
 	public void testCreateBag() throws ClassNotFoundException, SQLException {
-
 		Class.forName("com.polenta.jdbc.PolentaDriver");
 
 		Properties connectionProps = new Properties();

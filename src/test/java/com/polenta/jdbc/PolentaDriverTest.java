@@ -9,7 +9,6 @@ import static org.junit.Assert.assertFalse;
 
 public class PolentaDriverTest extends PolentaDriver {
 
-	@Ignore
 	@Test
 	public void testAcceptsUrl() throws SQLException {
 		assertFalse(acceptsURL(null));
