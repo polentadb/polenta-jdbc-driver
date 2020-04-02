@@ -1,5 +1,7 @@
 package com.polenta.jdbc;
 
+import com.polenta.jdbc.exception.MethodNotSupportedSQLException;
+
 import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -46,11 +48,6 @@ public class PolentaDriver implements java.sql.Driver {
 		}
 		return true;
 	}
-	
-	public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) throws SQLException {
-		//return null;
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");
-	}
 
 	public int getMajorVersion() {
 		return 0;
@@ -61,11 +58,19 @@ public class PolentaDriver implements java.sql.Driver {
 	}
 
 	public boolean jdbcCompliant() {
-		return false;
+		return true;
+	}
+
+	/******************************************************************************************************/
+	/***************** METHODS REQUIRED BY INTERFACE BUT NOT YET SUPPORTED BY DRIVER **********************/
+	/******************************************************************************************************/
+
+	public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) throws SQLException {
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-		return null;
+		throw  new SQLFeatureNotSupportedException();
 	}
 
 }

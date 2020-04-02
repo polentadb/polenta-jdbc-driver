@@ -1,5 +1,7 @@
 package com.polenta.jdbc;
 
+import com.polenta.jdbc.exception.MethodNotSupportedSQLException;
+
 import java.sql.*;
 import java.util.List;
 import java.util.Map;
@@ -10,14 +12,6 @@ public class PolentaStatement implements Statement {
 	
 	PolentaStatement(PolentaConnection connection) {
 		this.connection = connection;
-	}
-
-	public <T> T unwrap(Class<T> iface) throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
-	}
-
-	public boolean isWrapperFor(Class<?> iface) throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -67,62 +61,6 @@ public class PolentaStatement implements Statement {
 		}	
 	}
 
-	public void close() throws SQLException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public int getMaxFieldSize() throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public void setMaxFieldSize(int max) throws SQLException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public int getMaxRows() throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public void setMaxRows(int max) throws SQLException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setEscapeProcessing(boolean enable) throws SQLException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public int getQueryTimeout() throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public void setQueryTimeout(int seconds) throws SQLException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void cancel() throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
-	}
-
-	public SQLWarning getWarnings() throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
-	}
-
-	public void clearWarnings() throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
-	}
-
-	public void setCursorName(String name) throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");
-	}
-
 	public boolean execute(String sql) throws SQLException {
 		if (!connection.isClosed()) {
 			Map<String, Object> serverResponse = connection.writeToSocket(sql);
@@ -140,129 +78,176 @@ public class PolentaStatement implements Statement {
 				return true;
 			}
 		} else {
-			throw new SQLException("Connection to server has been closed. Statement cannot be executed"); 
-		}		
+			throw new SQLException("Connection to server has been closed. Statement cannot be executed");
+		}
+	}
+
+	/******************************************************************************************************/
+	/***************** METHODS REQUIRED BY INTERFACE BUT NOT YET SUPPORTED BY DRIVER **********************/
+	/******************************************************************************************************/
+
+	public <T> T unwrap(Class<T> iface) throws SQLException {
+		throw new MethodNotSupportedSQLException();
+	}
+
+	public boolean isWrapperFor(Class<?> iface) throws SQLException {
+		throw new MethodNotSupportedSQLException();
+	}
+
+	public void close() throws SQLException {
+		throw new MethodNotSupportedSQLException();
+	}
+
+	public int getMaxFieldSize() throws SQLException {
+		throw new MethodNotSupportedSQLException();
+	}
+
+	public void setMaxFieldSize(int max) throws SQLException {
+		throw new MethodNotSupportedSQLException();
+	}
+
+	public int getMaxRows() throws SQLException {
+		throw new MethodNotSupportedSQLException();
+	}
+
+	public void setMaxRows(int max) throws SQLException {
+		throw new MethodNotSupportedSQLException();
+	}
+
+	public void setEscapeProcessing(boolean enable) throws SQLException {
+		throw new MethodNotSupportedSQLException();
+	}
+
+	public int getQueryTimeout() throws SQLException {
+		throw new MethodNotSupportedSQLException();
+	}
+
+	public void setQueryTimeout(int seconds) throws SQLException {
+		throw new MethodNotSupportedSQLException();
+	}
+
+	public void cancel() throws SQLException {
+		throw new MethodNotSupportedSQLException();
+	}
+
+	public SQLWarning getWarnings() throws SQLException {
+		throw new MethodNotSupportedSQLException();
+	}
+
+	public void clearWarnings() throws SQLException {
+		throw new MethodNotSupportedSQLException();
+	}
+
+	public void setCursorName(String name) throws SQLException {
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public ResultSet getResultSet() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public int getUpdateCount() throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public boolean getMoreResults() throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public void setFetchDirection(int direction) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public int getFetchDirection() throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public void setFetchSize(int rows) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public int getFetchSize() throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public int getResultSetConcurrency() throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public int getResultSetType() throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public void addBatch(String sql) throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public void clearBatch() throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public int[] executeBatch() throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public Connection getConnection() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public boolean getMoreResults(int current) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public ResultSet getGeneratedKeys() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public int executeUpdate(String sql, int autoGeneratedKeys) throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public int executeUpdate(String sql, int[] columnIndexes) throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public int executeUpdate(String sql, String[] columnNames) throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public boolean execute(String sql, int autoGeneratedKeys) throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public boolean execute(String sql, int[] columnIndexes) throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public boolean execute(String sql, String[] columnNames) throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public int getResultSetHoldability() throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public boolean isClosed() throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public void setPoolable(boolean poolable) throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public boolean isPoolable() throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public void closeOnCompletion() throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
+		throw new MethodNotSupportedSQLException();
 	}
 
 	public boolean isCloseOnCompletion() throws SQLException {
-		throw new SQLException("Operation not supported! Wait for a new version of Polenta JDBC Driver!");		
+		throw new MethodNotSupportedSQLException();
 	}
 
 }
