@@ -7,11 +7,11 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 @SuppressWarnings("deprecation")
-public class PolentaDriver implements java.sql.Driver {
+public class Driver implements java.sql.Driver {
 
 	static {
 		try {
-			PolentaDriver driverInst = new PolentaDriver();
+			Driver driverInst = new Driver();
 			DriverManager.registerDriver(driverInst);
 			//System.setSecurityManager(new RMISecurityManager());
 		} catch (Exception e) {

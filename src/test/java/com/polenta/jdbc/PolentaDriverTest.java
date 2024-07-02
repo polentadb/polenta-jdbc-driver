@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class PolentaDriverTest extends PolentaDriver {
+public class PolentaDriverTest extends Driver {
 
 	@Test
 	public void testValidURLFormatAreAccepted() throws SQLException {
